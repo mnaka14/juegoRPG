@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Juego RPG</title>
+</head>
+<body>
+	<script type="text/javascript">
+		class Pj{
+			constructor(n, s){
+				this.nombre = n;
+				this.stats = s;
+
+			}
+			funcion(){
+				console.log("Soy " + this.nombre);
+			}
+		}
+
+		class Stats{
+			constructor(fu, de, co, i, sa, ca){
+				this.fue = fu;
+				this.des = de;
+				this.con = co;
+				this.int = i;
+				this.sab = sa;
+				this.car = ca;
+			}
+		}
+
+		function createPj (nombre, fu, de, co, i, sa, ca){
+			let stats = new Stats(fu, de, co, i, sa, ca);
+			let pj = new Pj(nombre, stats) 
+		}
+
+		createPj("naka",10, 10, 10, 10, 10, 10)
+
+
+
+
+	</script>
+</body>
+</html>

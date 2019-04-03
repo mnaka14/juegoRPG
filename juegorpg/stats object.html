@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Juego RPG</title>
+</head>
+<body>
+	<h6> <span class="label label-default">Naka</span></h6>
+	<h6><span id="hp" class="label label-default"></span></h6>
+	<h6><span id="ca" class="label label-default">New</span></h6>
+	<h6><span id="weapon" class="label label-default">New</span></h6>
+	<h6><span id="atMod" class="label label-default">New</span></h6>
+	<h6><span id="stats" class="label label-default">New</span></h6>
+
+	<button type="button" class="btn btn-primary">Ataque</button>
+
+	<script type="text/javascript">
+		class Pj{
+			constructor(n, s, w, h, ca){
+				this.nombre = n;
+				this.stats = s;
+				this.weapon = w;
+				this.hp = h;
+				this.ca = ca;
+				this.atMod = 0;
+
+			}
+			ataque(enemigo){
+				let atCheck = Math.floor(Math.random() * 20) + 1 + this.atMod;
+				console.log("Attack check = " + atCheck)
+				if(atCheck > enemigo.ca){
+					let dmg = Math.floor(Math.random() * this.weapon.daño) + 1;
+					console.log("daño = " + dmg);
+					enemigo.hp = enemigo.hp - dmg;
+					console.log("hp enemigo = " + enemigo.hp)
+				}else{
+					console.log("miss");
+				}
+			}
+		}
+
+		class Stats{
+			constructor(fu, de, co, i, sa, ca){
+				this.fue = fu;
+				this.des = de;
+				this.con = co;
+				this.int = i;
+				this.sab = sa;
+				this.car = ca;
+			}
+		}
+
+		class Weapon{
+			constructor(n, d){
+				this.nombre = n;
+				this.daño = d;
+			}
+		}
+
+		const dados = { 
+			d3 : 3,
+			d4 : 4,
+			d6 : 6,
+			d8 : 8,
+			d10 : 10
+		}		
+		
+		const espada = new Weapon("espada", dados.d8);
+
+		var stats = new Stats(10, 10, 10, 10, 10, 10);
+		let naka = new Pj("naka", stats, espada, 10, 10);
+
+		let object = document.getElementById("#stats");
+		naka.stats.forEach(function(a){
+			object.appendChild(a)
+		});
+
+
+
+
+	</script>
+</body>
+</html>
